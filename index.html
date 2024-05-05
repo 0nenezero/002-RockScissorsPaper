@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안내문진거</title>
+    <link rel="stylesheet" href="assets/style/index.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="title">
+        안내문<span class="handwriting">진거 가위바위보</span>
+      </h1>
+      <section id="game-cont">
+        <section class="game-info">
+          <h3 class="sr-only">게임 정보</h3>
+          <p class="round-cont">남은횟수 <span>10</span></p>
+          <p class="time-cont">시간 <span>10:00</span></p>
+        </section>
+        <section class="player-cont">
+          <h3 class="sr-only">플레이어 정보</h3>
+          <div class="com">
+            <p class="player">COMPUTER</p>
+            <p class="score">3</p>
+            <p class="choice">가위</p>
+          </div>
+          <div class="user">
+            <p class="player">YOU</p>
+            <p class="score">4</p>
+            <p class="choice">바위</p>
+          </div>
+          <section class="button-cont">
+            <h3 class="sr-only">가위바위보 버튼 목록</h3>
+            <button class="btn-scissors">가위</button>
+            <button class="btn-rock">바위</button>
+            <button class="btn-paper">보</button>
+          </section>
+        </section>
+      </section>
+      <section id="result-cont">
+        <h2 class="sr-only">게임 결과</h2>
+        <p class="result">이겼습니다!</p>
+        <section class="player-cont">
+          <h3 class="sr-only">플레이어 정보</h3>
+          <div class="com">
+            <p class="player">COMPUTER</p>
+            <p class="score">3</p>
+          </div>
+          <div class="user">
+            <p class="player">YOU</p>
+            <p class="score">4</p>
+          </div>
+        </section>
+        <button class="retry-btn">다시하기</button>
+      </section>
+    </div>
+  </body>
+</html>
