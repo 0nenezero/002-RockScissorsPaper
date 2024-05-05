@@ -18,6 +18,8 @@ function renderResult() {
 
 const $retryBtn = $resultCont.querySelector(".retry-btn");
 $retryBtn.addEventListener("click", () => {
-  location.reload();
-  // 또는 initPage()
+  score.user = 0;
+  score.computer = 0;
+  game.round = 1;
+  initGame();
 });

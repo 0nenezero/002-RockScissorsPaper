@@ -6,9 +6,44 @@ const score = {
 const game = {
   round: 1,
   totalRound: 10,
+  timer: null,
+  time: 6,
 };
 
 const $gameCont = document.getElementById("game-cont");
+
+function startTimer() {
+  game.timer = setInterval(() => {
+    game.time--;
+    renderTimer();
+    if (game.time < 0) {
+      clearInterval(game.timer);
+      const computerChoice = choice[Math.floor(Math.random() * choice.length)];
+      renderChoice(null, computerChoice);
+      score.computer++;
+      game.round++;
+      renderScore();
+      renderCount();
+      game.time = 5;
+      if (game.round > game.totalRound) {
+        renderResult();
+      } else {
+        resetTimer();
+      }
+    }
+  }, 1000);
+}
+function resetTimer() {
+  clearInterval(game.timer);
+  game.time = 5;
+  renderTimer();
+  startTimer();
+}
+
+const $timer = $gameCont.querySelector(".time-cont span");
+function renderTimer() {
+  $timer.innerText = game.time;
+}
 
 const $choiceBtns = $gameCont.querySelectorAll(".choice-btn");
 $choiceBtns.forEach((choice) => {
@@ -19,6 +54,8 @@ $choiceBtns.forEach((choice) => {
 
 function playGame(userChoice) {
   if (game.round > game.totalRound) return;
+
+  clearInterval(game.timer);
 
   const computerChoice = choice[Math.floor(Math.random() * choice.length)];
   renderChoice(userChoice, computerChoice);
@@ -40,14 +77,16 @@ function playGame(userChoice) {
   game.round++;
   if (game.round > game.totalRound) {
     renderResult();
+  } else {
+    resetTimer();
   }
 }
 
 const $userChoice = $gameCont.querySelector(".user .choice");
 const $computerChoice = $gameCont.querySelector(".computer .choice");
 function renderChoice(user, computer) {
-  $userChoice.innerText = user;
-  $computerChoice.innerText = computer;
+  $userChoice.innerText = user || "-";
+  $computerChoice.innerText = computer || "-";
 }
 
 const $userPlayScore = $gameCont.querySelector(".user .score");
@@ -65,5 +104,6 @@ function renderCount() {
 function initGame() {
   renderScore();
   renderCount();
+  startTimer();
 }
 initGame();
