@@ -20,6 +20,9 @@ const $retryBtn = $resultCont.querySelector(".retry-btn");
 $retryBtn.addEventListener("click", () => {
   score.user = 0;
   score.computer = 0;
+  $gameResult.innerText = "";
+  $userScore.innerText = score.user;
+  $computerScore.innerText = score.computer;
 
   game.round = 1;
   clearInterval(game.timer);
